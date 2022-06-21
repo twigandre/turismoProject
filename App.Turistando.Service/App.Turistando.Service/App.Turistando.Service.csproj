@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App.Turistando.Database\App.Turistando.Database.csproj" />
+    <ProjectReference Include="..\App.Turistando.DependencyInjections\App.Turistando.DependencyInjections.csproj" />
+    <ProjectReference Include="..\App.Turistando.Logic\App.Turistando.Logic.csproj" />
+    <ProjectReference Include="..\App.Turistando.Utils\App.Turistando.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
