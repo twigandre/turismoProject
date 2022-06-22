@@ -1,4 +1,6 @@
 using App.Turistando.DependencyInjections;
+using App.Turistando.Logic.Authentication;
+using App.Turistando.Logic.Token;
 using App.Turistando.Utils.ScretKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -76,7 +78,6 @@ namespace App.Turistando.Service
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapControllerRoute(name: "default", pattern: "");
                 endpoints.MapControllers();
             });
         }

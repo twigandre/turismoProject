@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NLog.Web;
+using System.IO;
 
 namespace App.Turistando.Service
 {
@@ -13,6 +15,9 @@ namespace App.Turistando.Service
     {
         public static void Main(string[] args)
         {
+            var logPath = ConfigurationPath.Combine(Directory.GetCurrentDirectory(), "Logs");
+            NLog.GlobalDiagnosticsContext.Set("LogDirectory", logPath);
+
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -21,6 +26,11 @@ namespace App.Turistando.Service
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
+                }).UseNLog();
     }
 }

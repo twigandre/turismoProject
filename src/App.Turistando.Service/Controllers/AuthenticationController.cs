@@ -30,7 +30,7 @@ namespace App.Turistando.Service.Controllers
             if (user == null)
                 return NotFound(new {status = 404, message = "Usuário e senha Inválidos!"});
 
-            var token = _token.GenerateToken(model);
+            var token = _token.GenerateToken(user);
 
             return new { status = 200, message = "Usuario encontrado", token = token };
         }

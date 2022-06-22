@@ -9,7 +9,6 @@ namespace App.Turistando.DependencyInjections
     {
         public static void InjectDependencies(IServiceCollection services, IConfiguration configuration)
         {
-
             #region Logic
                 services.AddScoped<IToken, Token>();
                 services.AddScoped<IAuthentication, Authentication>();
