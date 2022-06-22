@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Turistando.Database.SqlServer.Entities;
+using App.Turistando.Database.SqlServer.Repository;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,14 +14,18 @@ namespace App.Turistando.Service.Controllers
     public class IndexController : ControllerBase
     {
         private readonly ILogger<IndexController> _logger;
-        public IndexController(ILogger<IndexController>logger)
+        IRepository<UsuariosCadastradosEntity> _repository;
+
+        public IndexController(ILogger<IndexController>logger,
+                               IRepository<UsuariosCadastradosEntity> repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         [HttpGet]
         public string Get() {
-            _logger.LogInformation("SERVIÇO INICIADO EM " + DateTime.UtcNow);
+            _logger.LogInformation("*** TURISTANDO service activated in  " + DateTime.UtcNow + " ***");
             return "Turistando! I'm standing :D.";
         }
     }
