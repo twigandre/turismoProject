@@ -2,6 +2,7 @@
 using App.Turistando.Database.SqlServer.Entities;
 using App.Turistando.Database.SqlServer.Repository;
 using App.Turistando.Logic.Authentication;
+using App.Turistando.Logic.FileUpload;
 using App.Turistando.Logic.Token;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,7 @@ namespace App.Turistando.DependencyInjections
             #region Logic
             services.AddScoped<IToken, Token>();
             services.AddScoped<IAuthentication, Authentication>();
+            services.AddScoped<IFileUpload, FileUpload>();
             #endregion
 
             #region Entitites

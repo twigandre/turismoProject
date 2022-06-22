@@ -1,5 +1,6 @@
 ﻿using App.Turistando.Database.SqlServer.Entities;
 using App.Turistando.Database.SqlServer.Repository;
+using App.Turistando.Logic.FileUpload;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,12 +16,15 @@ namespace App.Turistando.Service.Controllers
     {
         private readonly ILogger<IndexController> _logger;
         IRepository<UsuariosCadastradosEntity> _repository;
+        IFileUpload _uploadFile;
 
         public IndexController(ILogger<IndexController>logger,
-                               IRepository<UsuariosCadastradosEntity> repository)
+                               IRepository<UsuariosCadastradosEntity> repository,
+                               IFileUpload uploadFile)
         {
             _logger = logger;
             _repository = repository;
+            _uploadFile = uploadFile;
         }
 
         [HttpGet]
@@ -29,4 +33,5 @@ namespace App.Turistando.Service.Controllers
             return "Turistando! I'm standing :D.";
         }
     }
+
 }
